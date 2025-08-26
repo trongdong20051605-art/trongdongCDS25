@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Counter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+    .gradient-bg {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .card-hover {
+      transition: all 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    }
+    .upload-area {
+      border: 2px dashed #cbd5e0;
+      transition: all 0.3s ease;
+    }
+    .upload-area:hover {
+      border-color: #667eea;
+      background-color: #f7fafc;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      transition: all 0.3s ease;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+    }
+  </style>
+</head>
+<body class="bg-gray-50 min-h-screen">
+  <!-- Header -->
+  <div class="gradient-bg text-white py-16">
+    <div class="container mx-auto px-4 text-center">
+      <div class="text-6xl mb-4">🎓</div>
+      <h1 class="text-4xl font-bold mb-4">Đếm số lượng sinh viên</h1>
+      <p class="text-xl opacity-90 max-w-2xl mx-auto">
+        Sử dụng AI để đếm số sinh viên trong lớp học từ video hoặc hình ảnh một cách chính xác và nhanh chóng
+      </p>
+    </div>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container mx-auto px-4 py-12">
+    <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+      
+      <!-- Video Upload Card -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">Upload Video</h3>
+          <p class="text-gray-600">Phân tích video để đếm sinh viên theo thời gian thực</p>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" action="/" class="space-y-6">
+          <div class="upload-area rounded-xl p-8 text-center">
+            <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+            </svg>
+            <p class="text-gray-600 mb-4">Kéo thả video vào đây hoặc</p>
+            <input type="file" name="video" accept="video/*" required 
+                   class="hidden" id="video-input">
+            <label for="video-input" 
+                   class="inline-block bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-2 rounded-lg cursor-pointer transition-colors">
+              Chọn Video
+            </label>
+          </div>
+          
+          <button type="submit" 
+                  class="w-full btn-primary text-white py-4 px-6 rounded-xl font-semibold text-lg">
+            <span class="flex items-center justify-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-6 4h8m-9-4V8a3 3 0 013-3h6a3 3 0 013 3v2M7 21h10a2 2 0 002-2v-5a2 2 0 00-2-2H7a2 2 0 00-2 2v5a2 2 0 002 2z"></path>
+              </svg>
+              Phân Tích Video
+            </span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Image Upload Card -->
+      <div class="bg-white rounded-2xl shadow-lg p-8 card-hover">
+        <div class="text-center mb-6">
+          <div class="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+            </svg>
+          </div>
+          <h3 class="text-2xl font-semibold text-gray-800 mb-2">Upload Image</h3>
+          <p class="text-gray-600">Đếm số sinh viên từ ảnh chụp lớp học</p>
+        </div>
+
+        <form method="POST" enctype="multipart/form-data" action="/image" class="space-y-6">
+          <div class="upload-area rounded-xl p-8 text-center">
+            <svg class="w-12 h-12 text-gray-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"></path>
+            </svg>
+            <p class="text-gray-600 mb-4">Kéo thả hình ảnh vào đây hoặc</p>
+            <input type="file" name="image" accept="image/*" required 
+                   class="hidden" id="image-input">
+            <label for="image-input" 
+                   class="inline-block bg-gray-100 hover:bg-gray-200 text-gray-700 px-6 py-2 rounded-lg cursor-pointer transition-colors">
+              Chọn Hình Ảnh
+            </label>
+          </div>
+          
+          <button type="submit" 
+                  class="w-full bg-green-600 hover:bg-green-700 text-white py-4 px-6 rounded-xl font-semibold text-lg transition-all hover:transform hover:-translate-y-1 hover:shadow-lg">
+            <span class="flex items-center justify-center">
+              <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+              </svg>
+              Đếm Sinh Viên
+            </span>
+          </button>
+        </form>
+      </div>
+    </div>
+
+  <!-- Footer -->
+  <footer class="bg-gray-800 text-white py-8 mt-16">
+    <div class="container mx-auto px-4 text-center">
+      <p class="text-gray-400">© 2025 Student Counter - Powered by AI Technology</p>
+    </div>
+  </footer>
+
+  <script>
+    // Add file name display functionality
+    document.getElementById('video-input').addEventListener('change', function(e) {
+      const fileName = e.target.files[0]?.name;
+      if (fileName) {
+        const label = document.querySelector('label[for="video-input"]');
+        label.textContent = fileName;
+        label.classList.add('bg-blue-100', 'text-blue-700');
+      }
+    });
+
+    document.getElementById('image-input').addEventListener('change', function(e) {
+      const fileName = e.target.files[0]?.name;
+      if (fileName) {
+        const label = document.querySelector('label[for="image-input"]');
+        label.textContent = fileName;
+        label.classList.add('bg-green-100', 'text-green-700');
+      }
+    });
+
+    // Add drag and drop functionality
+    const uploadAreas = document.querySelectorAll('.upload-area');
+    
+    uploadAreas.forEach(area => {
+      area.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        area.classList.add('border-blue-500', 'bg-blue-50');
+      });
+      
+      area.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        area.classList.remove('border-blue-500', 'bg-blue-50');
+      });
+      
+      area.addEventListener('drop', (e) => {
+        e.preventDefault();
+        area.classList.remove('border-blue-500', 'bg-blue-50');
+        const files = e.dataTransfer.files;
+        if (files.length > 0) {
+          const input = area.querySelector('input[type="file"]');
+          input.files = files;
+          input.dispatchEvent(new Event('change'));
+        }
+      });
+    });
+  </script>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9713efad9284cf4c',t:'MTc1NTU0NjU4NS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
